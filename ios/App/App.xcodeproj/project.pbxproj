@@ -1,0 +1,184 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006EB5D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60589A0D05DD56006EB5D5 /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D6058910D05DD56006EB5D5 /* EclipseWeaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EclipseWeaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D60589A0D05DD56006EB5D5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD56006EB5D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		29B97314FDCFA39411CA2CEA = {
+			isa = PBXGroup;
+			children = (
+				29B97315FDCFA39411CA2CEA /* App */,
+				1D6058920D05DD56006EB5D5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D6058920D05DD56006EB5D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD56006EB5D5 /* EclipseWeaver.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1D60589A0D05DD56006EB5D5 /* AppDelegate.swift */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D60588E0D05DD56006EB5D5 /* EclipseWeaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD56006EB5D5 /* Build configuration list for PBXNativeTarget "EclipseWeaver" */;
+			buildPhases = (
+				1D60588D0D05DD56006EB5D5 /* Sources */,
+				1D60588F0D05DD56006EB5D5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EclipseWeaver;
+			productName = EclipseWeaver;
+			productReference = 1D6058910D05DD56006EB5D5 /* EclipseWeaver.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+			};
+			buildConfigurationList = C01FC37008A95454007D917A /* Build configuration list for PBXProject "App" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA;
+			productRefGroup = 1D6058920D05DD56006EB5D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D60588E0D05DD56006EB5D5 /* EclipseWeaver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588D0D05DD56006EB5D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006EB5D5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD56006EB5D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_IDENTITY = "";
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krabople.eclipseweaver;
+				PRODUCT_NAME = EclipseWeaver;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD56006EB5D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_IDENTITY = "";
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krabople.eclipseweaver;
+				PRODUCT_NAME = EclipseWeaver;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C01FC37108A95454007D917A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FC37208A95454007D917A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD56006EB5D5 /* Build configuration list for PBXNativeTarget "EclipseWeaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD56006EB5D5 /* Debug */,
+				1D6058950D05DD56006EB5D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FC37008A95454007D917A /* Build configuration list for PBXProject "App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FC37108A95454007D917A /* Debug */,
+				C01FC37208A95454007D917A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
