@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Eclipse Weaver: Echoes of the Cosmos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Dynamic HUD Overlay -->
+        <div id="hud" class="hidden">
+            <div class="hud-top">
+                <div class="stat-box">
+                    <span class="stat-label">SCORE</span>
+                    <span id="scoreText" class="stat-value">0</span>
+                </div>
+                <div class="stat-box center">
+                    <span id="levelTitleText" class="level-title">SECTOR 1-1</span>
+                    <div class="objective-tracker">
+                        <span id="objectiveText">PURIFY ORBITAL NODES</span>
+                    </div>
+                </div>
+                <div class="stat-box right">
+                    <span class="stat-label">MULTIPLIER</span>
+                    <span id="multiplierText" class="stat-value highlight">x1.0</span>
+                </div>
+            </div>
+
+            <!-- Energy & Echo Gauge -->
+            <div class="hud-bottom">
+                <div class="gauge-container">
+                    <div class="gauge-label">ENERGY</div>
+                    <div class="gauge-bar-outer">
+                        <div id="energyBar" class="gauge-bar-inner energy"></div>
+                    </div>
+                </div>
+                
+                <div class="center-controls">
+                    <button id="echoBtn" class="action-btn echo-btn" title="Activate Temporal Echo (Space / Tap)">
+                        <div class="btn-icon">⏱️</div>
+                        <div class="btn-label">TEMPORAL ECHO</div>
+                        <div id="echoCooldown" class="cooldown-overlay"></div>
+                    </button>
+                    <button id="novaBtn" class="action-btn nova-btn disabled" title="Release Supernova Burst (Shift / Tap)">
+                        <div class="btn-icon">💥</div>
+                        <div class="btn-label">SUPERNOVA</div>
+                    </button>
+                </div>
+
+                <div class="gauge-container">
+                    <div class="gauge-label">SUPERNOVA</div>
+                    <div class="gauge-bar-outer">
+                        <div id="supernovaBar" class="gauge-bar-inner nova"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="pauseBtn" class="icon-btn pause-icon">⏸</button>
+            <button id="audioToggleBtn" class="icon-btn audio-icon">🔊</button>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div id="mainMenu" class="overlay active">
+            <div class="glass-card main-card">
+                <div class="logo-container">
+                    <div class="glowing-orb"></div>
+                    <h1 class="game-title">ECLIPSE WEAVER</h1>
+                    <h2 class="game-subtitle">ECHOES OF THE COSMOS</h2>
+                </div>
+
+                <div class="menu-actions">
+                    <button id="startCampaignBtn" class="btn primary-btn">
+                        <span class="btn-text">CAMPAIGN MODE</span>
+                        <span class="btn-sub">30 Cosmic Sectors</span>
+                    </button>
+                    <button id="startEndlessBtn" class="btn secondary-btn">
+                        <span class="btn-text">ENDLESS SURGE</span>
+                        <span class="btn-sub">High Score Survival</span>
+                    </button>
+                    <button id="howToPlayBtn" class="btn tertiary-btn">HOW TO PLAY</button>
+                </div>
+
+                <div class="menu-footer">
+                    <div class="high-score-display">
+                        BEST SURGE SCORE: <span id="menuHighScore">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How To Play Modal -->
+        <div id="howToPlayModal" class="overlay hidden">
+            <div class="glass-card modal-card">
+                <h2>HOW TO PLAY</h2>
+                <div class="instructions-content">
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <strong>Weave Threads:</strong> Drag or use <strong>WASD / Arrow Keys / Touch Joystick</strong> to pilot your celestial core. Hold <strong>Space / Touch</strong> to tether glowing energy threads between orbital nodes.
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <strong>Form Constellations:</strong> Connect threads into closed geometric loops (triangles, polygons) around nodes to trigger a <strong>Solar Burst</strong>.
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <strong>Temporal Echo:</strong> Tap <strong>TEMPORAL ECHO</strong> to record a 4-second ghost path of your core. Partner with your past self to weave shapes impossible alone!
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">4</div>
+                        <div class="step-text">
+                            <strong>Purify & Destroy:</strong> Solar Bursts purify corruptors and clear black hole fragments while building your chord progression and Supernova meter.
+                        </div>
+                    </div>
+                </div>
+                <button id="closeHowToPlayBtn" class="btn primary-btn">GOT IT</button>
+            </div>
+        </div>
+
+        <!-- Level Select Modal -->
+        <div id="levelSelectModal" class="overlay hidden">
+            <div class="glass-card modal-card wide">
+                <h2>SELECT SECTOR</h2>
+                <div id="levelGrid" class="level-grid">
+                    <!-- Dynamic Level Cards JS rendered -->
+                </div>
+                <button id="backFromLevelsBtn" class="btn secondary-btn">BACK</button>
+            </div>
+        </div>
+
+        <!-- Pause Modal -->
+        <div id="pauseModal" class="overlay hidden">
+            <div class="glass-card modal-card">
+                <h2>GAME PAUSED</h2>
+                <div class="menu-actions">
+                    <button id="resumeBtn" class="btn primary-btn">RESUME</button>
+                    <button id="restartLevelBtn" class="btn secondary-btn">RESTART SECTOR</button>
+                    <button id="quitToMenuBtn" class="btn tertiary-btn">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level Complete Modal -->
+        <div id="levelCompleteModal" class="overlay hidden">
+            <div class="glass-card modal-card">
+                <div class="victory-header">
+                    <span class="victory-icon">✦</span>
+                    <h2 class="victory-title">SECTOR PURIFIED!</h2>
+                </div>
+                <div class="score-summary">
+                    <div class="summary-row">
+                        <span>SECTOR SCORE</span>
+                        <span id="levelScoreVal" class="val">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>CONSTELLATIONS</span>
+                        <span id="levelConstellationsVal" class="val">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>TIME ECHOES</span>
+                        <span id="levelEchoesVal" class="val">0</span>
+                    </div>
+                    <div class="stars-row" id="starsRow">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                <div class="menu-actions">
+                    <button id="nextLevelBtn" class="btn primary-btn">NEXT SECTOR</button>
+                    <button id="retryLevelBtn" class="btn secondary-btn">REPLAY</button>
+                    <button id="levelCompleteMenuBtn" class="btn tertiary-btn">SECTOR SELECT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="overlay hidden">
+            <div class="glass-card modal-card defeat">
+                <h2>COSMIC COLLAPSE</h2>
+                <p id="defeatReasonText">Your energy core was consumed by corruption.</p>
+                <div class="score-summary">
+                    <div class="summary-row">
+                        <span>FINAL SCORE</span>
+                        <span id="finalScoreVal" class="val">0</span>
+                    </div>
+                </div>
+                <div class="menu-actions">
+                    <button id="retryGameOverBtn" class="btn primary-btn">TRY AGAIN</button>
+                    <button id="gameOverMenuBtn" class="btn secondary-btn">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/engine/Vector2.js"></script>
+    <script src="js/engine/Physics.js"></script>
+    <script src="js/engine/ParticleSystem.js"></script>
+    <script src="js/engine/SoundSynth.js"></script>
+    <script src="js/game/Entities.js"></script>
+    <script src="js/game/Constellation.js"></script>
+    <script src="js/game/LevelManager.js"></script>
+    <script src="js/game/Game.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
