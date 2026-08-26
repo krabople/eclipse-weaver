@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 class WebGameViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
 
-    override void loadView() {
+    override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.allowsInlineMediaPlayback = true
         webConfiguration.mediaTypesRequiringUserActionForPlayback = []
