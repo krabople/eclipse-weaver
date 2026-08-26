@@ -5,6 +5,9 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-ios:
     name: Build & Package iOS .IPA
@@ -36,7 +39,7 @@ jobs:
                      CODE_SIGNING_REQUIRED=NO \
                      PROVISIONING_PROFILE_SPECIFIER="" \
                      build || {
-                       echo "Falling back to swiftc standalone compiler..."
+                       echo "Falling back to swiftc compiler..."
                        mkdir -p build/Release-iphoneos/EclipseWeaver.app
                        swiftc -sdk $(xcrun --sdk iphoneos --show-sdk-path) -target arm64-apple-ios14.0 App/AppDelegate.swift -o build/Release-iphoneos/EclipseWeaver.app/EclipseWeaver
                        cp App/Info.plist build/Release-iphoneos/EclipseWeaver.app/
